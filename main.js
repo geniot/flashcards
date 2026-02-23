@@ -1,6 +1,6 @@
-var fromArray = ["work", "job"];
-var toArray = ["werk", "baan"];
-var currentWordIndex = 0;
+let fromArray = ["work", "job"];
+let toArray = ["werk", "baan"];
+let currentWordIndex = 0;
 
 $(document).ready(function () {
   $("#card").flip({
@@ -19,16 +19,35 @@ $(document).ready(function () {
   $('#checkBtn').click(function (e) {
     check();
   });
-  update(currentWordIndex);
+  $('#showHideBtn').click(function (e) {
+    const editorPanel = $("#editorPanel");
+    if (editorPanel.hasClass('hidden')) {
+      editorPanel.removeClass('hidden');
+    } else {
+      editorPanel.addClass('hidden');
+    }
+    updateShowHideText();
+  });
+  updateCard(currentWordIndex);
   $("#fromTextArea").text(fromArray.join("\n"));
   $("#toTextArea").text(toArray.join("\n"));
+  updateShowHideText();
 });
 
-function check(){
-  if ($('#checkInput').val()===toArray[currentWordIndex]){
-    $("#checkInput").css({"border-color": "green", "border-width":"10px", "border-style":"solid"});
-  }else{
-    $("#checkInput").css({"border-color": "red", "border-width":"10px", "border-style":"solid"});
+function check() {
+  const checkInput = $('#checkInput');
+  if (checkInput.val() === toArray[currentWordIndex]) {
+    checkInput.css({"border-color": "green", "border-width": "10px", "border-style": "solid"});
+  } else {
+    checkInput.css({"border-color": "red", "border-width": "10px", "border-style": "solid"});
+  }
+}
+
+function updateShowHideText() {
+  if ($("#editorPanel").hasClass('hidden')) {
+    $("#showHideBtn").text('+');
+  } else {
+    $("#showHideBtn").text('-');
   }
 }
 
@@ -39,15 +58,15 @@ function nextWord(inc) {
   } else if (currentWordIndex >= fromArray.length) {
     currentWordIndex = 0;
   }
-  update(currentWordIndex);
+  updateCard(currentWordIndex);
 }
 
-function updateLists(){
+function updateLists() {
   fromArray = $("#fromTextArea").val().split("\n");
   toArray = $("#toTextArea").val().split("\n");
 }
 
-function update(index) {
+function updateCard(index) {
   $("#fromText").text(fromArray[index]);
   $("#toText").text(toArray[index]);
 }
