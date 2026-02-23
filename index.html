@@ -10,21 +10,40 @@
     <script src="main.js" type="text/javascript"></script>
 </head>
 <body>
-<div class="flex justify-center items-center h-screen">
-    <button id="prevBtn" class="mr-10 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-        Previous
-    </button>
-    <div id="card" class="w-80">
-        <div class="front bg-orange-50 p-6 border rounded-lg shadow-lg">
-            <h5 id="fromText" class="text-2xl font-semibold text-center"></h5>
-        </div>
-        <div class="back bg-emerald-50 p-6 border rounded-lg shadow-lg">
-            <h5 id="toText" class="text-2xl font-semibold text-center"></h5>
-        </div>
+
+<div class="flex flex-col justify-center items-center h-screen">
+    <div class="grid h-56 grid-cols-2 content-stretch gap-4 mb-5">
+        <label class="space-x-2 flex items-center relative mt-6" for="fromTextArea">From:</label>
+        <label class="space-x-2 flex items-center relative mt-6" for="toTextArea">To:</label>
+        <textarea id="fromTextArea" class="h-40 p-2 border rounded-lg"></textarea>
+        <textarea id="toTextArea" class="h-40 p-2 border rounded-lg"></textarea>
     </div>
-    <button id="nextBtn" class="ml-10 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-        Next
+    <button id="updateBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded  mb-20">
+        Update
     </button>
+    <div class="flex flex-row justify-center items-center mb-20">
+        <button id="prevBtn" class="mr-10 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+            Previous
+        </button>
+        <div id="card" class="w-80">
+            <div class="front bg-orange-50 p-6 border rounded-lg shadow-lg">
+                <h5 id="fromText" class="text-2xl font-semibold text-center"></h5>
+            </div>
+            <div class="back bg-emerald-50 p-6 border rounded-lg shadow-lg">
+                <h5 id="toText" class="text-2xl font-semibold text-center"></h5>
+            </div>
+        </div>
+        <button id="nextBtn" class="ml-10 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+            Next
+        </button>
+    </div>
+    <div class="flex flex-row justify-center items-center">
+        <label for="checkInput"></label><input type="text" onkeydown="check(this)" class="border rounded-lg p-2 ml-20" id="checkInput"/>
+        <button id="checkBtn" class="ml-5 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+            Check
+        </button>
+    </div>
 </div>
+
 </body>
 </html>
